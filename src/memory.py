@@ -105,12 +105,13 @@ class DecisionMemory(SemanticMemory):
         super().__init__(capacity, encoder=encoder)
         self.store_if_reward_below = store_if_reward_below
 
+
     def add(self, exp: Experience) -> None:
         """
-            Сохраняет событие только если оно было критическим (override=True)
-            или привело к низкой награде (reward < store_if_reward_below).
-            """
-        if not (exp.override or exp.reward < self.store_if_reward_below):
+        Сохраняет событие, если награда ниже установленного порога
+        (reward < store_if_reward_below).
+        """
+        if not (exp.reward < self.store_if_reward_below):
             return
 
         exp.emb = self._encode(exp.context)
@@ -119,5 +120,3 @@ class DecisionMemory(SemanticMemory):
 
         if len(self.buf) > self.capacity:
             self.buf.pop(0)
-
-
