@@ -34,7 +34,7 @@ def main():
             data=data_subset,
             x="K",
             y="recovery_time",
-            label={"no_memory": "Без памяти", "semantic": "Семантическая", "decision": "DeMem"}[agent],
+            label={"no_memory": "Без памяти", "semantic": "Семантическая", "decision": "Селективная память"}[agent],
             marker="o",
             linewidth=2.5,
             color=palette[agent],

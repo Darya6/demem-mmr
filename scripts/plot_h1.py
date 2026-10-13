@@ -44,7 +44,7 @@ def main():
     plt.xticks([3, 5, 10, 20])
 
     handles, labels = plt.gca().get_legend_handles_labels()
-    label_map = {"semantic": "Семантическая память", "decision": "DeMem"}
+    label_map = {"semantic": "Семантическая память", "decision": "Селективная память"}
     labels = [label_map.get(x, x) for x in labels]
     plt.legend(handles, labels, title="Агент", loc="best")
 
